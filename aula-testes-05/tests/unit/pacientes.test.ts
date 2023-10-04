@@ -13,10 +13,11 @@ describe("Protocol Generator Tests", () => {
   it("should create an protocol", async () => {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
+    const priority = faker.datatype.boolean();
 
-    const protocol = generateProtocolForPacient(firstName, lastName, true);
+    const protocol = generateProtocolForPacient(firstName, lastName, priority);
     expect(protocol).toEqual({
-      priority: true,
+      priority,
       date: expect.any(Date),
       pacient: `${firstName} ${lastName}`,
       protocol: "mock protocol",

@@ -52,7 +52,9 @@ describe("Order Service Tests", () => {
 
   it("should return status INVALID when protocol doesn't exists", async () => {
     const mock = jest.spyOn(orderRepository, "getByProtocol");
-    mock.mockImplementationOnce((): any => {});
+    mock.mockImplementationOnce((): any => {
+      return undefined;
+    });
 
     const protocol = "does_not_exists_protocol";
     const order = await getOrderByProtocol(protocol);
